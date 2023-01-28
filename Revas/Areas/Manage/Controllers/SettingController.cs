@@ -51,7 +51,7 @@ namespace Revas.Areas.Manage.Controllers
                 _context.SaveChanges();
             }
 
-            return View(model);
+            return RedirectToAction("Index");
         }
     }
 }
