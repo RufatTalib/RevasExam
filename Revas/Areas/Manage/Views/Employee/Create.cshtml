@@ -1,0 +1,67 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<form asp-action="create" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="form-group mb-3 col-sm-3">
+
+            <label>Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+        </div>
+        <div class="form-group mb-3 col-sm-3">
+
+            <label>Surname</label>
+            <input asp-for="Surname" class="form-control" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="form-outline mb-3 col-sm-6">
+            <label>Description</label>
+            <textarea asp-for="Description" style="width:100%" class="form-control"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group mb-3 col-sm-6">
+            <label>Facebook Link</label>
+            <input asp-for="Link1" class="form-control" />
+            <span asp-validation-for="Link1" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group mb-3 col-sm-6">
+            <label>Linked In Link</label>
+            <input asp-for="Link2" class="form-control" />
+            <span asp-validation-for="Link2" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group mb-3 col-sm-6">
+            <label>Google+ Link</label>
+            <input asp-for="Link3" class="form-control" />
+            <span asp-validation-for="Link3" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group mb-3 col-sm-6">
+            <label>Upload Image</label>
+            <input asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="form-group col-sm-6">
+            <button method="submit" class="btn btn-outline-success btn-block">Create</button>
+        </div>
+    </div>
+
+</form>

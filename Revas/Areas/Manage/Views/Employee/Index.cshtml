@@ -1,0 +1,118 @@
+﻿@using Revas.Helpers
+@model PaginatedList<Employee>
+
+@{
+    ViewData["Title"] = "Employees";
+}
+
+
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">@ViewData["Title"]</h1>
+    <a class="btn btn-outline-success btn-lg my-3" asp-action="create">Create New</a>
+
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+    </a>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewData["Title"]</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Description</th>
+                        <th>Link1</th>
+                        <th>Link2</th>
+                        <th>Link3</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Employee p in Model)
+                    {
+                        <tr>
+                            <td>@p.Name</td>
+                            <td>@p.Surname</td>
+                            <td>@p.Description</td>
+                            <td>@p.Link1</td>
+                            <td>@p.Link2</td>
+                            <td>@p.Link3</td>
+                            <td>
+                                <div style="width:100px;">
+                                    <img src="~/upload/@p.ImageUrl" style="max-width:100%;">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <a asp-action="edit" asp-route-id="@p.Id"><i class="fas fa-edit"></i> Edit</a>
+                                </div>
+
+
+                            </td>
+                            <td>
+                                <div>
+                                    <a asp-action="delete" asp-route-id="@p.Id" id="deleteItem"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <nav>
+                <ul class="pagination">
+
+
+                    <li class="page-item @(Model.HasPrevius ? "" : "disabled")">
+                        <a class="page-link" asp-action="index" asp-route-page="@(Model.ActivePage-1)" tabindex="-1">Previous</a>
+                    </li>
+
+                    @for (int i = 1; i <= Model.TotalPage; i++)
+                    {
+                        <li class="page-item @(Model.ActivePage == i ? "active" : "")">
+                            <a class="page-link" asp-action="index" asp-route-page="@i">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.HasNext ? "" : "disabled")">
+                        <a class="page-link" asp-action="index" asp-route-page="@(Model.ActivePage+1)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@section script
+    {
+    <script>
+        var elements = document.querySelectorAll("#deleteItem");
+        elements.forEach(btn => {
+            let url = btn.getAttribute("href");
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                fetch(url).then(res => {
+                    if (res.status == 200) {
+                        alert("Deleted !");
+                        btn.parentElement.parentElement.parentElement.remove();
+                    }
+                });
+
+            });
+        });
+
+
+
+    </script>
+
+}

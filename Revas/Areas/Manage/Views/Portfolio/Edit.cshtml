@@ -1,0 +1,31 @@
+﻿@model Portfolio
+
+<form asp-action="edit" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="form-group mb-3 col-sm-3">
+
+            <label>Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="form-group mb-3 col-sm-3">
+
+            <label>Upload Image</label>
+            <input asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-3">
+            <button method="submit" class="btn btn-outline-success">Update</button>
+        </div>
+    </div>
+
+</form>
