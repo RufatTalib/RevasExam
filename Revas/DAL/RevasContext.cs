@@ -14,6 +14,7 @@ namespace Revas.DAL
         public DbSet<AppUser> Users { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Portfolio> Portfolios { get; set; }
+        public DbSet<Setting> Settings { get; set; }
 
     }
 }

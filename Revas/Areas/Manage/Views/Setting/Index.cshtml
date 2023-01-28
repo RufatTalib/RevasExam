@@ -1,0 +1,19 @@
+﻿@model SettingVM
+
+<form method="post" asp-action="save">
+
+    <div>
+        <label>Project Name</label>
+        <input asp-for="ProjectName"/>
+        <span asp-validation-for="ProjectName"></span>
+    </div>
+    <div>
+        <label>Location</label>
+        <textarea asp-for="Location"></textarea>
+        <span asp-validation-for="Location"></span>
+    </div>
+
+
+    <button>Save</button>
+
+</form>
